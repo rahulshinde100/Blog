@@ -1,4 +1,4 @@
-<% @post = Post.find_by_permalink(params[:id]) %>
+<% @post = Post.find_by_permalink(permalink) %>
 <%# @category = Category.find_by_permalink(@post.category_id) %>
 <% @category = @post.category %>
 

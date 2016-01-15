@@ -1,6 +1,7 @@
 Blog::Application.routes.draw do
 
   get "users/show"
+  get "home/index"
   resources :comments
 
   resources :tags

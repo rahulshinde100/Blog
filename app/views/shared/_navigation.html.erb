@@ -1,43 +1,78 @@
-<nav class="navbar navbar-default" role="navigation">
-  <div class="container">
-    <div class="navbar-header">
-      <a class="navbar-brand" href="/">Home</a>
-    </div>
 
+  <div class="title_bar">
 
-
-      <ul class="nav navbar-nav navbar-right">
-      <li class="dropdown">
-         <% if user_signed_in? %>
-
-        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><%= image_tag current_user.image(:thumb) ,size: "45x25" ,  class: "img-rounded pull-xs-right" %><b><%= current_user.fname%> <%= current_user.lname%> </b>
-            <% else %>
-           <a href="#" class="dropdown-toggle" data-toggle="dropdown"> Menu
-            <% end %>
-
-           <span class="caret"></span></a>
-        <ul class="dropdown-menu" role="menu">
-          
-
+  <div class="col-lg-0 col-sm-20">
+      <div class="card hovercard">
+          <div class="card-background">
+              <img class="card-bkimg" alt="" src="http://lorempixel.com/850/280/people/9/">
+          </div>
+          <div class="useravatar">
               <% if user_signed_in? %>
-     <li><%= link_to "Profile" , users_show_path %></li>
-          <li class="divider"></li>
-           <li> Profile Picture Change</li>
-            <li class="divider"></li>
-    <li> <%= link_to "Sign Out", destroy_user_session_path, :method => :delete %> </li>
-         
-    <% else %>
-     
-      <li> <%= link_to "Sign UP", new_user_registration_path  %> </li>
-    <li class="divider"></li>
-       
-         <li><%= link_to "Sign In" , new_user_session_path %> </li>
-     
-      <%end%>
+              <img alt="" src="<%= current_user.image %>">
+            
+              <% else %>
+              <img alt="" src="http://lorempixel.com/100/100/people/9/">
+             
+              <% end %>
+          </div>
+          <div class="card-info"> <span class="usrname">
+
+               <% if user_signed_in? %>
+
+             <b> <%= current_user.fname.capitalize %> <%= current_user.lname.capitalize %></b>
+            
+              <% else %>
           
-        </ul>
-      </li>
-    </ul>
+                  Pamela Anderson
+              <% end %>
+
+          </span>
+
+          </div>
+      </div>
+
+  </div>        
+
   </div>
-</nav>
+
+
+  <nav class="navbar navbar-default" role="navigation">
+    <div class="container">
+      <div class="navbar-header">
+        <a class="navbar-brand"  href="/">Blogger</a>
+      </div>
+
+
+        <ul class="nav navbar-nav navbar-right">
+        <li class="dropdown">
+          
+
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown"><%#= image_tag current_user.image(:thumb) ,size: "45x25" ,  class: "profile_image" %><b>Account </b>
+            
+
+             <span class="caret"></span></a>
+          <ul class="dropdown-menu" role="menu">
+            
+
+                <% if user_signed_in? %>
+       <li align="left"><%= link_to "Profile" , users_show_path %></li>
+            <li class="divider"></li>
+             <li align="left">Picture Change</li>
+              <li class="divider"></li>
+      <li align="left"> <%= link_to "Sign Out", destroy_user_session_path, :method => :delete %> </li>
+           
+      <% else %>
+       
+        <li align="left"> <%= link_to "Sign UP", new_user_registration_path  %> </li>
+      <li class="divider"></li>
+         
+           <li align="left"><%= link_to "Sign In" , new_user_session_path %> </li>
+       
+        <%end%>
+            
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </nav>
 

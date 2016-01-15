@@ -1,9 +1,11 @@
 <p id="notice"><%= notice %></p>
 <% @comment =Comment.new %>
-  <%  @post = Post.find_by_permalink(params[:id]) %>
-  <%#= raise @post.inspect  %>
+ <%# raise params.inspect  %>
+  <%  @post = Post.find_by_permalink(permalink) %>
+  <%# raise params.inspect  %>
 <div class="field form-group">
     <%# raise @post.inspect %>
+
     Posted by:-<b><%= @post.user.fname.capitalize %> <%= @post.user.lname.capitalize %></b>
 <% if user_signed_in?  %>
 
@@ -63,7 +65,7 @@
     
      <% end %>      
 
-      <%= render partial: "comments/form" , locals: {category: @post.category , post: @post} %>
+      <%= render partial: "comments/form" , locals: {category: @post.category , permalink: @post.permalink} %>
 
      
 

@@ -23,12 +23,12 @@
     <% @categories.each do |category| %>
       <tr>
 
-        <td align="center">
+        <td align="left">
             
             <%= category.posts.count rescue "" %>
      </td>
 
-       <td align="center">
+       <td align="left">
               <%total_comment = 0 %>
               <% @cpost = category.posts %>
               <% @cpost.each do |cp| %>
@@ -43,45 +43,50 @@
 
 
 
-        <td><span class="has-tooltip" data-toggle="tooltip" title="<%= " #{time_ago_in_words(category.created_at)} ago" %>">
+        <td align="left"><span class="has-tooltip" data-toggle="tooltip" title="<%= " #{time_ago_in_words(category.created_at)} ago" %>">
       <%=link_to category.title.capitalize , category_path(category.permalink) rescue ""  %>
   </span>
 </td>
 
-        <td>
+        <td align="left">
         <% @cpost = category.posts %>
           <%  %>
          <%# @cpost.each do |post| %>
 
         <% @cpost.map(&:tags).flatten.map(&:title).uniq.each do |t| %>
             <%#= post.tags.uniq.join(' , ')%>
+                <% if t == @cpost.map(&:tags).flatten.map(&:title).uniq.last %>
               <% tagid = Tag.find_by_title(t) %>
+              <%= link_to t , tag_path(tagid.permalink) %> 
+              <% else %>
+               <% tagid = Tag.find_by_title(t) %>
               <%= link_to t , tag_path(tagid.permalink) %> ,
+              <% end %>
           <% end %>
           <%# end %>
      </td>
 
 
 
-        <td>
+        <td align="left">
 
-          <%= link_to category, class: 'btn btn-success' do %>
+          <%= link_to category, class: 'btn btn-success btn-xs' do %>
           <i class="glyphicon glyphicon-th"></i> Show
     <% end %>
 </td>
 
 
 
-<td>
+<td align="left">
 
-          <%= link_to  edit_category_path(category), class: 'btn btn-warning' do %>
+          <%= link_to  edit_category_path(category), class: 'btn btn-warning btn-xs' do %>
           <i class="glyphicon glyphicon-edit"></i> Edit
     <% end %>
 </td>
 
 
         
-        <td>
+        <td align="left">
 
           <%= link_to  category, method: :delete, data: { confirm: 'Are you sure?' } ,class: "btn btn-danger btn-xs" do %>
           <i class="glyphicon glyphicon-trash"></i> Destroy
@@ -100,3 +105,8 @@
 <%= link_to new_category_path, class: 'btn btn-info' do %>
   <i class="glyphicon glyphicon-plus"></i> New Category
 <% end %>
+
+
+
+
+

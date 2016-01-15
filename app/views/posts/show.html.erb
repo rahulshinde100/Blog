@@ -8,20 +8,12 @@
 
       <% if @post.user.id == current_user.id  %>
 
-
-
-
-
 <%= link_to  category_post_path(@post.category_id , @post), method: :delete, data: { confirm: 'Are you sure?' } ,class: "glyphicon glyphicon-remove
 " do %>
           
           <% end %>
 
-
    <%#= link_to 'Post Delete', category_post_path(@post.category_id , @post), method: :delete, data: { confirm: 'Are you sure?' }  rescue "" %>
-
-
-
 
       <% end %>
       <% end %>
@@ -62,7 +54,7 @@
     
      <% end %>      
 
-      <%= render partial: "comments/form" , locals: {category: @post.category , post: @post} %>
+      <%= render partial: "comments/form" , locals: {category: @post.category , permalink: @post.permalink} %>
 
      
 

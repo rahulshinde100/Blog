@@ -1,61 +1,112 @@
-<h2>Sign up</h2>
+<div class="my_signup">
+
+<h2 class="signup_title">Sign up</h2>
+
+  <hr class="colorgraph">
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= devise_error_messages! %>
 
-
-    <div class="field">
-   <%= f.label "First Name" %> <br>
-   <%= f.text_field :fname, autofocus: true , :placeholder => " Enter the First Name" , required: true %> <br>
-  <%= f.label "Last Name" %> <br>
-   <%= f.text_field :lname, autofocus: true , :placeholder => " Enter the Last Name" , required: true %>
-    </div>
+  
 
 
-
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true %>
+    <div class="field form-group">
+   <%= f.label "First Name" , class: 'col-sm-3 control-label' %> 
+    <div class="col-sm-8">
+   <%= f.text_field :fname, class: 'form-control' , autofocus: true , :placeholder => " Enter the First Name" , required: true %> 
+</div>
   </div>
+<br><br><br>
 
-  <div class="field">
-    <%= f.label :password %>
+  <div class="field form-group">
+  <%= f.label "Last Name" , class: 'col-sm-3 control-label' %> 
+   <div class="col-sm-8">
+   <%= f.text_field :lname, class: 'form-control' , autofocus: true , :placeholder => " Enter the Last Name" , required: true %>
+    </div>
+<br><br><br>
+
+
+  <div class="field form-group">
+    <%= f.label :email  , class: 'col-sm-3 control-label' %>
+     <div class="col-sm-8">
+    <%= f.email_field :email, class: 'form-control'  , :placeholder => " Enter the Email" , required: true %>
+  </div>
+</div>
+<br><br><br>
+
+
+ <div class="field form-group">
+    <%= f.label :password  , class: 'col-sm-3 control-label'%>
+     <div class="col-sm-8">
+    
+    
+    <%= f.password_field :password, autocomplete: "off" , class: 'form-control'  , :placeholder => " Enter the Password " , required: true %>
     <% if @minimum_password_length  %>
     <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "off" %>
+    <% end %>
   </div>
 
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "off" %>
+</div>
+
+<br><br><br>
+
+
+   <div class="field form-group">
+    <%= f.label :password_confirmation , class: 'col-sm-3 control-label' %>
+     <div class="col-sm-8">
+    <%= f.password_field :password_confirmation, autocomplete: "off" , class: 'form-control'  , :placeholder => " Enter Confirm Password " , required: true %>
+  </div>
   </div>
 
+<br><br><br>
 
-    <div class="field">
-    <%= f.label "Birth Date" %><br>
-    <%= f.date_select :birthdate , :id => "mydatepicker" , required: true %>
+
+    <div class="field form-group">
+    <%= f.label "Birth Date" , class: 'col-sm-3 control-label' %>
+    <div class="col-sm-8">
+    <%= f.date_select :birthdate , :id => "mydatepicker" ,class: 'form-control' , required: true %>
   </div>
-
-  <div class="field">
-    <%=  f.label :gender %><br/>
-    <%= f.radio_button :gender, true %> Male
-    <%= f.radio_button :gender, false %>Female
   </div>
+<br><br><br>
 
-  <div class="field">
-    <%=  f.label :country %><br/>
-    <%= f.country_select :country , required: true %>
-  </div><br>
-  <div class="field">
-    <%= f.label "Profile Picture" %><br><br>
-    <%= f.file_field :image , :placeholder=>'Select Profile Picture' , required: true %>
+  <div class="field form-group">
+    <%=  f.label :gender  , class: 'col-sm-3 control-label'%>
+    <div class="col-sm-8">
+    <%= f.radio_button :gender, true  %> Male
+    <%= f.radio_button :gender, false  %>Female
+  </div>
+</div>
+<br><br>
+
+
+
+ <div class="field form-group">
+    <%=  f.label :country  , class: 'col-sm-3 control-label' %>
+    <div class="col-sm-8">
+    <%= f.country_select :country ,class: 'form-control', required: true , prompt: true %>
+  </div>
+</div>
+<br><br>
+
+  <div class="field form-group">
+    <%= f.label "Profile Picture"  , class: 'col-sm-3 control-label'%>
+    <div class="col-sm-8">
+    <%= f.file_field :image , :placeholder=>'Select Profile Picture' ,class: 'form-control', required: true %>
 
   </div>
+    </div>
 
-  <div class="actions">
-    <%= f.submit "Sign up" %>
+<br><br><br>
+
+ <div class="actions form-group">
+    <div class="col-sm-offset-3 col-sm-4">
+    <%= f.submit "Sign up" , class: "btn btn-primary btn-block btn-lg" %>
   </div>
+</div>
+<br><br><br>
 <% end %>
-
+</hr>
+  <hr class="colorgraph">
 <%= render "devise/shared/links" %>
+</hr>
+</div>

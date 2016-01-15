@@ -30,18 +30,13 @@
     <% end %>
 </td>
 
-
-        
+  
         <td>
 
           <%= link_to  tag, method: :delete, data: { confirm: 'Are you sure?' } ,class: "btn btn-danger btn-xs" do %>
           <i class="glyphicon glyphicon-trash"></i> Destroy
           <% end %>
       </td>
-
-
-
-
        
       </tr>
     <% end %>
@@ -49,13 +44,6 @@
 </table>
 
 <br>
-
-
-
-
-
-
-
 
 
 <%= link_to new_tag_path, class: 'btn btn-info' do %>
