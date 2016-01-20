@@ -128,10 +128,40 @@
 </td>
 
 
+
+
+
+    <script>
+    $(document).ready(function(){
+    $("#deletebtn").click(function(){
+            swal({
+            title: "Are you sure?",
+             text: "You will not be able to recover this imaginary file!",
+            type: "warning",
+              showCancelButton: true,
+              confirmButtonColor: "#DD6B55",
+               confirmButtonText: "Yes, delete it!",
+              closeOnConfirm: false
+              },
+                function(){
+                 swal("Deleted!", "Your imaginary file has been deleted.", "success");
+              });
+
+            });
+      });
+    </script>
+
+
+
+
+
+
+
+
         
         <td align="left">
 
-          <%= link_to  category, method: :delete, data: { confirm: 'Are you sure?' } ,class: "btn btn-danger btn-xs" do %>
+          <%= link_to  category, method: :delete, data: { confirm: 'Are you sure?' } ,:id => "deletebtn" ,class: "btn btn-danger btn-xs" do %>
           <i class="glyphicon glyphicon-trash"></i>  <font color="cyan">Destroy</font>
           
       </td>

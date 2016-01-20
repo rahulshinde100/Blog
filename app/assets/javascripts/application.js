@@ -30,3 +30,17 @@ $(document).ready(function() {
                 });  
             
             });
+
+
+
+ $(document).ready(function(){
+    $("#myclick").click(function(){
+        $(this).hide();
+    });
+});
+
+
+
+
+
+

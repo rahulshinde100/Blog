@@ -20,7 +20,7 @@
             
 
                 <% if user_signed_in? %>
-       <li align="left"><%= link_to " Profile" , users_show_path , class: "glyphicon glyphicon-user" %></li>
+       <li align="left"><%= link_to " Profile" , users_show_path , class: "glyphicon glyphicon-user " %></li>
             <li class="divider"></li>
              <li align="left">Picture Change</li>
               <li class="divider"></li>
@@ -60,7 +60,7 @@
               <img alt="" src="<%= current_user.image %>">
             
               <% else %>
-              <img alt="" src="http://lorempixel.com/100/100/people/9/">
+              <%= image_tag "nobody_m.original.jpg" %>
              
               <% end %>
           </div>

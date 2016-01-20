@@ -49,7 +49,7 @@ end
     if @category.update(category_params)
       flash[:success] = 'Category was successfully updated.'
       format.html { redirect_to @category }
-      format.json { render :show, status: :ok, location: @todo }
+      format.json { render :show, status: :ok, location: @category }
     else
       flash[:danger] = 'There was a problem updating the Category.'
       format.html { render :edit }

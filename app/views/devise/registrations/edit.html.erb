@@ -77,7 +77,8 @@
       <div class="field form-group">
     <%= f.label "Birth Date" , class: 'col-sm-3 control-label' %>
     <div class="col-sm-8">
-    <%= f.date_select :birthdate , :id => "mydatepicker" ,class: 'form-control' , required: true %>
+      <%= f.text_field :birthdate , :id => "example1" ,class: 'form-control' , required: true  %>
+    <%#= f.date_select :birthdate , :id => "mydatepicker" ,class: 'form-control' , required: true %>
   </div>
   </div>
 <br><br><br>
