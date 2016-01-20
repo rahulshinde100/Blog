@@ -1,9 +1,11 @@
+<div class = "mylogin">
+
 <p id="notice"><%= notice %></p>
 
 
 <div class="field form-group">
     <%# raise @post.inspect %>
-    Posted by:-<b><%= @post.user.fname.capitalize %> <%= @post.user.lname.capitalize %></b>
+   <center> Posted by:-<span class="label label-pill label-success"><%= @post.user.fname.capitalize %> <%= @post.user.lname.capitalize %></span>
 <% if user_signed_in?  %>
 
       <% if @post.user.id == current_user.id  %>
@@ -17,6 +19,9 @@
 
       <% end %>
       <% end %>
+    </center>
+
+      <hr class="colorgraph">
       <br><br><br>
       <%= image_tag @post.image.url(:medium) %>  <br><br>
      <p id ="showtitle"> <font size = "7" ><%= @post.title.capitalize %></font></p>
@@ -27,7 +32,12 @@
 
 
               <p id="tagid" > Tags:- <% @post.tags.each do |tag| %>
-              <%=link_to tag.title , tag_path( tag ) %> ,
+                                <% if tag == @post.tags.last %>
+                                  <%=link_to tag.title , tag_path( tag ) , :class => "btn btn-link" rescue "" %>
+                                <% else %>
+                                  <%=link_to tag.title , tag_path( tag ) , :class => "btn btn-link" rescue "" %>,
+                                <% end %>
+               
           <% end %></p>
 
           <p id="timestamp">Posted <%= time_ago_in_words(@post.created_at) %> ago </p>
@@ -41,15 +51,13 @@
         <%#= link_to '-', edit_category_post_comment_path(@post.category , @post, c ) %>
 
         <p  class="divider">  
-
-            <%= link_to  category_post_comment_path(@post.category.id , @post.id, c ), method: :delete, data: { confirm: 'Are you sure?' } ,class: "glyphicon glyphicon-remove
-" do %>
+      <%= link_to  category_post_comment_path(@post.category.id , @post.id, c ), method: :delete, data: { confirm: 'Are you sure?' } ,class: "glyphicon glyphicon-remove" do %>
           
           <% end %>
 
 
 
-          <% end %> <% end %><%= c.user.fname.capitalize %> <%= c.user.lname.capitalize %>:- <%= c.comment_string %><p id="timestamp"><%= time_ago_in_words(c.created_at) %> ago</p></p>
+          <% end %> <% end %><span class="label label-pill label-info"><%= c.user.fname.capitalize %> <%= c.user.lname.capitalize %>:- </span><%= c.comment_string %><p id="timestamp"><%= time_ago_in_words(c.created_at) %> ago</p></p>
     
     
      <% end %>      
@@ -57,15 +65,12 @@
       <%= render partial: "comments/form" , locals: {category: @post.category , permalink: @post.permalink} %>
 
      
+</hr>
 
-
-  </div><br><br>
-
-<%= link_to new_category_post_path(@category), class: 'btn btn-success' do %>
+  </div><br><br><br><br>
+<hr class="colorgraph">
+<%= link_to new_category_post_path(@category), class: 'btn  btn-success' do %>
   <i class="glyphicon glyphicon-plus"></i> New Post
 <% end %>
-
-</font size = "5"><%#= link_to 'Back', :back %></font>
-
-<%#= link_to 'Edit', edit_post_path(@post) %> 
-<%#= link_to 'Back', posts_path %>
+</hr>
+</div>

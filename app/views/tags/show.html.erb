@@ -3,8 +3,16 @@
 
 
 <div class="container">
-  <h2><%= @tag.title %> Tag Posts</h2>
-  
+  <font color="blue"><h2><%= @tag.title %> Tag Posts</h2></font>
+      <%  if @posttag.empty?%>
+
+
+        <div class = "alert alert-danger">
+   
+    Posts not available.
+</div>
+
+    <% else %>
   <div class="panel-group" id="accordion">
 
     <% @posttag.each do |p| %>
@@ -12,7 +20,7 @@
     <div class="panel panel-default">
       <div class="panel-heading">
         <h4 class="panel-title">
-          <a data-toggle="collapse" data-parent="#accordion" href="#collapse_<%= p.post.id %>"><%= p.post.title.capitalize %></a>
+          <a data-toggle="collapse"  class = "btn btn-link " data-parent="#accordion" href="#collapse_<%= p.post.id %>"><%= p.post.title.capitalize %></a>
         </h4>
       </div>
       <div id="collapse_<%= p.post.id %>" class="panel-collapse collapse">
@@ -26,6 +34,8 @@
     </div>
     <% end %>
     <% end %>
+    
+    <%end%>
   </div> 
 </div>
     

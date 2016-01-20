@@ -1,4 +1,7 @@
-<%= form_for(@tag) do |f| %>
+
+
+
+<%= form_for(@tag , role: "form" , "data-toggle" => "validator") do |f| %>
   <% if @tag.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@tag.errors.count, "error") %> prohibited this tag from being saved:</h2>
@@ -11,9 +14,10 @@
     </div>
   <% end %>
  <div class="field form-group">
-    <%= f.label :title, class: 'col-sm-2 control-label' %>
+    <%= f.label :title, class: 'col-md-1 control-label' %>
     <div class="col-sm-5">
-      <%= f.text_field :title, class: 'form-control' , :placeholder=>'Enter the Tag' , required: true%>
+      <%= f.text_field :title, class: 'form-control' , id: "inputSuccess" , :placeholder=>'Enter the Tag' , required: true %>
+   
     </div>
   </div>
 
@@ -26,3 +30,5 @@
     </div>
   </div>
 <% end %>
+
+

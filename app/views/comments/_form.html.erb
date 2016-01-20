@@ -3,7 +3,7 @@
 <% @category = @post.category %>
 
 <%  @comment=Comment.new %>
-<%= form_for [@category, @post, @comment] do |f| %>
+<%= form_for [@category, @post, @comment] , class: "form" do |f| %>
   <% if @comment.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@comment.errors.count, "error") %> prohibited this comment from being saved:</h2>
@@ -18,7 +18,7 @@
 
   <div class="field form-group">
     <%= f.label "Comment", class: 'col-sm-1 control-label' %> <br>
-    <div class="col-sm-5">
+    <div class="col-sm-9">
       <%= f.text_area :comment_string, class: 'form-control' , :placeholder=>'Enter the Comment' , required: true %>
     </div>
   </div>

@@ -1,10 +1,29 @@
-<h1>New category</h1>
+<h1>New Category</h1>
 <ul class="nav nav-tabs" role="tablist">
   <li><%= link_to 'View list', categories_path %></li>
   <li class="active"><%= link_to 'New Category', new_category_path %></li>
   <li><%= link_to 'Tag List', tags_path %></li>
-</ul>
+  
+  <% if user_signed_in? %>
+
+    <li><%= link_to 'My Posts', posts_myposts_path %></li>
+
+    <% end %>
 </ul>
 
-<%= render 'form' %>
+<div class = "panel panel-success">
+   <div class = "panel-heading">
+      <h3 class = "panel-title">
+         New Category
+      </h3>
+   </div>
+   
+   <div class = "panel-body">
+      <%= render 'form' %>
+   </div>
+</div>
+
+
+
+
 

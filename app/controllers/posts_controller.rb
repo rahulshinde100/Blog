@@ -1,8 +1,28 @@
 class PostsController < ApplicationController
-   before_filter :authenticate_user!, :except => [ :index, :show ]
+   before_filter :authenticate_user!, :except => [ :index, :show ,:searchposts ]
   before_action :set_post, only: [:show, :edit, :update, :destroy]
 
   respond_to :html
+
+def myposts
+
+
+        @posts= Post.where(user_id: current_user.id)
+
+end
+
+def searchposts
+  #@posts = Post.paginate(:page => params[:page], :per_page => 3)
+@posts = Post.search(params[:search])
+
+#@search = Post.search(params[:search])
+  # make name the default sort column
+ # @search.sorts = 'title' if @search.sorts.empty?
+ # @posts = @search.paginate(params[:page])
+
+  
+end
+
 
   def index
     @posts = Post.all
@@ -23,6 +43,16 @@ class PostsController < ApplicationController
   end
 
   def edit
+
+      #raise params.inspect
+
+      @category  = Category.find(params[:category_id])
+      @post = Post.find_by_permalink(params[:id])
+
+      @all_tags =Tag.all
+    @post_tag = @post.posttags.build
+
+      #raise @post.inspect
   end
 
   def create
@@ -51,7 +81,7 @@ class PostsController < ApplicationController
 
   def update
     @post.update(post_params)
-    respond_with(@post)
+   redirect_to categories_path
   end
 
   def destroy

@@ -3,30 +3,51 @@
   <li><%= link_to 'View list', categories_path %></li>
   <li><%= link_to 'New Category', new_category_path %></li>
   <li class="active"><%= link_to 'Tag List', tags_path %></li>
+  <% if user_signed_in? %>
+
+    <li><%= link_to 'My Posts', posts_myposts_path %></li>
+
+    <% end %>
 </ul>
+
+
+
+
 <table class="table table-over" >
   <thead>
     <tr>
       <th>Title</th>
+
+        <% if user_signed_in? %>
+
+       
       <th></th>
       <th></th>
       <th></th>
+      <% end %>
     </tr>
   </thead>
 
   <tbody>
     <% @tags.each do |tag| %>
       <tr>
-        <td><%= link_to tag.title.capitalize , tag_path(tag)%></td>
-        <td><%= link_to  tag ,class: 'btn btn-success' do %>
-          <i class="glyphicon glyphicon-th"></i> Show
+        <td align="left"><%= link_to tag.title.capitalize , tag_path(tag) ,:class => "btn btn-link" rescue "" %></td>
+
+
+        <% if user_signed_in? %>
+
+            <%  if tag.user_id == current_user.id %>
+
+
+        <td><%= link_to  tag ,class: 'btn btn-success btn-xs' do %>
+          <i class="glyphicon glyphicon-th"></i> <font color="cyan">Show</font>
           <% end %>
         </td>
         
           <td>
 
-          <%= link_to  edit_tag_path(tag), class: 'btn btn-warning' do %>
-          <i class="glyphicon glyphicon-edit"></i> Edit
+          <%= link_to  edit_tag_path(tag), class: 'btn btn-warning btn-xs' do %>
+          <i class="glyphicon glyphicon-edit"></i> <font color="cyan">Edit</font>
     <% end %>
 </td>
 
@@ -34,11 +55,14 @@
         <td>
 
           <%= link_to  tag, method: :delete, data: { confirm: 'Are you sure?' } ,class: "btn btn-danger btn-xs" do %>
-          <i class="glyphicon glyphicon-trash"></i> Destroy
+          <i class="glyphicon glyphicon-trash"></i><font color="cyan"> Destroy</font>
           <% end %>
       </td>
        
       </tr>
+
+      <% end %>
+      <% end %>
     <% end %>
   </tbody>
 </table>

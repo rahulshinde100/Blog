@@ -2,14 +2,17 @@ Blog::Application.routes.draw do
 
   get "users/show"
   get "home/index"
-  resources :comments
+   get 'posts/myposts'
+   get 'posts/searchposts'
 
   resources :tags
 
   resources :categories do
 
       resources :posts do
+
       resources :comments
+
     end
   end
 
@@ -31,16 +34,14 @@ Blog::Application.routes.draw do
   #   resources :products
 
   # Example resource route with options:
-  #   resources :products do
-  #     member do
-  #       get 'short'
-  #       post 'toggle'
-  #     end
-  #
-  #     collection do
-  #       get 'sold'
-  #     end
-  #   end
+    # resources :posts do
+    #   member do
+    #     get 'posts/myposts'
+        
+    #   end
+  
+     
+    # end
 
   # Example resource route with sub-resources:
   #   resources :products do

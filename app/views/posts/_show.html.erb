@@ -6,7 +6,7 @@
 <div class="field form-group">
     <%# raise @post.inspect %>
 
-    Posted by:-<b><%= @post.user.fname.capitalize %> <%= @post.user.lname.capitalize %></b>
+    Posted by:-<span class="label label-pill label-success"><%= @post.user.fname.capitalize %> <%= @post.user.lname.capitalize %></span>
 <% if user_signed_in?  %>
 
       <% if @post.user.id == current_user.id  %>
@@ -60,7 +60,7 @@
 
 
 
-          <% end %> <% end %><%= c.user.fname.capitalize %> <%= c.user.lname.capitalize %>:- <%= c.comment_string %><p id="timestamp"><%= time_ago_in_words(c.created_at) %> ago</p></p>
+          <% end %> <% end %><span class="label label-pill label-info"><%= c.user.fname.capitalize %> <%= c.user.lname.capitalize %>:- </span><%= c.comment_string %><p id="timestamp"><%= time_ago_in_words(c.created_at) %> ago</p></p>
     
     
      <% end %>      
